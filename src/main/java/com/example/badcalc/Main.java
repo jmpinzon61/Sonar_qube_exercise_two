@@ -115,8 +115,12 @@ public class Main {
 
     // Método para manejar la lógica de la opción 8 (Historial)
     public static void handleHistoryOption() {
-        for (Object h : history) {
-            logger.info(h.toString());
+        if (!history.isEmpty()) {  // Invocación condicional para evitar la ejecución innecesaria
+            for (Object h : history) {
+                logger.info(h.toString());
+            }
+        } else {
+            logger.info("No history available.");
         }
     }
 
@@ -171,7 +175,7 @@ public class Main {
         } catch (IOException e) { }
 
         Scanner sc = new Scanner(System.in);
-
+        
         while (true) {
             handleMenuOption(sc); // Llamada al método que maneja las opciones del menú
             String opt = sc.nextLine();
