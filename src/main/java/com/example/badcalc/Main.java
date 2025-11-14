@@ -1,5 +1,4 @@
 package com.example.badcalc;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,17 +14,14 @@ public class Main {
     // Creación del logger para el manejo de logs
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     private static final ConsoleHandler consoleHandler = new ConsoleHandler();
-
     // Hacemos history final y no pública
     private static final List<String> history = new ArrayList<>(); // history ahora es final y no pública
-
     private static String last = ""; // 'last' es privado
     private static int counter = 0; // 'counter' es privado
     private static final Random randomGenerator = new Random();  // Renombrado de 'R' a 'randomGenerator'
-
     // Hacemos API_KEY privado y final
     private static final String API_KEY = "NOT_SECRET_KEY"; 
-
+    
     static {
         // Configuración del logger
         consoleHandler.setLevel(Level.ALL);
@@ -134,7 +130,6 @@ public class Main {
         logger.info("opt: ");
         String opt = sc.nextLine();
         if ("0".equals(opt)) return; // Salir si la opción es 0.
-
         // Solicitar los operandos a operar dependiendo de la opción seleccionada.
         String a = "0", b = "0";
         if (!"7".equals(opt) && !"8".equals(opt)) {
@@ -143,7 +138,6 @@ public class Main {
             logger.info("b: ");
             b = sc.nextLine();
         } 
-
         // Procesar la operación seleccionada.
         String op = switch (opt) {
             case "1" -> "+";
@@ -154,7 +148,6 @@ public class Main {
             case "6" -> "%";
             default -> "";
         };
-
         double res = 0;
         try {
             res = compute(a, b, op); // Ejecutar la operación.
@@ -183,17 +176,15 @@ public class Main {
         } catch (IOException e) { }
 
         Scanner sc = new Scanner(System.in);
-        
+
         while (true) {
             handleMenuOption(sc); // Llamada al método que maneja las opciones del menú
             String opt = sc.nextLine();
             
             if ("7".equals(opt)) {
                 handleLLMOption(sc); // Llamada al método que maneja la opción LLM
-                continue;
             } else if ("8".equals(opt)) {
                 handleHistoryOption(); // Llamada al método que maneja la opción Historial
-                continue;
             }
         }
     }
