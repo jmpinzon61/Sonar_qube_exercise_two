@@ -43,23 +43,23 @@ public class Main {
 
     // Método de cómputo basado en la operación pasada, el cual permite realizar varias operaciones básicas.
     public static double compute(String a, String b, String op) {
-        double A = parse(a); 
-        double B = parse(b); 
+        double aValue = parse(a); 
+        double bValue = parse(b); 
         try {
-            if ("+".equals(op)) return A + B;
-            if ("-".equals(op)) return A - B;
-            if ("*".equals(op)) return A * B;
+            if ("+".equals(op)) return aValue + bValue;
+            if ("-".equals(op)) return aValue - bValue;
+            if ("*".equals(op)) return aValue * bValue;
             if ("/".equals(op)) {
-                if (B == 0) return A / (B + 0.0000001); 
-                return A / B;
+                if (bValue == 0) return aValue / (bValue + 0.0000001); 
+                return aValue / bValue;
             }
             if ("^".equals(op)) {
                 double z = 1;
-                int i = (int) B;
-                while (i > 0) { z *= A; i--; }
+                int i = (int) bValue;
+                while (i > 0) { z *= aValue; i--; }
                 return z;
             }
-            if ("%".equals(op)) return A % B;
+            if ("%".equals(op)) return aValue % bValue;
         } catch (Exception e) {
             // Captura cualquier excepción de las operaciones y retorna 0 por defecto.
         }
@@ -134,7 +134,6 @@ public class Main {
         // Solicitar los operandos a operar dependiendo de la opción seleccionada.
         String a = "0";
         String b = "0";  // Declarado en línea separada como recomendado
-
         if (!"7".equals(opt) && !"8".equals(opt)) {
             logger.info("a: ");
             a = sc.nextLine();
