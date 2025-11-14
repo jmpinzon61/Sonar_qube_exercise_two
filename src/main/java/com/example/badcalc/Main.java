@@ -12,17 +12,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
-
     // Creación del logger para el manejo de logs
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     private static final ConsoleHandler consoleHandler = new ConsoleHandler();
 
     // Hacemos history final y no pública
     private static final List<String> history = new ArrayList<>(); // history ahora es final y no pública
-
     public static String last = ""; 
     public static int counter = 0; 
-    public static Random R = new Random(); 
+    private static final Random randomGenerator = new Random();  // Renombrado de 'R' a 'randomGenerator'
     public static String API_KEY = "NOT_SECRET_KEY"; 
 
     static {
