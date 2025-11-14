@@ -3,7 +3,8 @@ package com.example.badcalc;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList; // Uso correcto de ArrayList con tipo parametrizado.
+import java.util.ArrayList;
+import java.util.List; // Usamos List en lugar de ArrayList
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.ConsoleHandler;
@@ -16,7 +17,8 @@ public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     private static final ConsoleHandler consoleHandler = new ConsoleHandler();
 
-    public static ArrayList<String> history = new ArrayList<>(); // Especificamos el tipo String para evitar el uso de tipos crudos.
+    // Hacemos history final y no pública
+    private static final List<String> history = new ArrayList<>(); // history ahora es final y no pública
 
     public static String last = ""; 
     public static int counter = 0; 
@@ -157,12 +159,6 @@ public class Main {
             res = compute(a, b, op); // Ejecutar la operación.
         } catch (Exception e) { }
         
-        // **Línea corregida:**
-
-        // Aquí faltaba el código o comentario explicativo.
-        // Ahora lo hemos dejado en blanco intencionalmente para agregar los detalles necesarios
-        // o completar el bloque de código, dependiendo del contexto.
-
         // Guardar el resultado en el historial
         String line = a + "|" + b + "|" + op + "|" + res;
         writeHistoryToFile(line);
