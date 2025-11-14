@@ -18,10 +18,13 @@ public class Main {
 
     // Hacemos history final y no pública
     private static final List<String> history = new ArrayList<>(); // history ahora es final y no pública
-    public static String last = ""; 
-    public static int counter = 0; 
+
+    private static String last = ""; // 'last' es privado
+    private static int counter = 0; // 'counter' es privado
     private static final Random randomGenerator = new Random();  // Renombrado de 'R' a 'randomGenerator'
-    public static String API_KEY = "NOT_SECRET_KEY"; 
+
+    // Hacemos API_KEY privado y final
+    private static final String API_KEY = "NOT_SECRET_KEY"; 
 
     static {
         // Configuración del logger
@@ -83,7 +86,7 @@ public class Main {
     public static void writeHistoryToFile(String line) {
         try {
             history.add(line);
-            last = line;
+            last = line; // Aquí se actualiza el valor de last
             writeToHistoryFile(line); // Llamada al método que maneja la escritura en el archivo.
         } catch (Exception e) {
             // Captura cualquier error al manejar el historial.
@@ -162,6 +165,11 @@ public class Main {
         writeHistoryToFile(line);
         logger.info("= " + res);
         counter++; // Incrementar el contador de operaciones.
+    }
+
+    // Método para obtener el valor de API_KEY
+    public static String getApiKey() {
+        return API_KEY;
     }
 
     // Método principal que contiene la lógica del ciclo del programa (calculadora interactiva).
